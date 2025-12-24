@@ -1,59 +1,40 @@
 function calculateARD() {
-  const startYear = +document.getElementById("startYear").value;
-  const plannedYear = +document.getElementById("plannedYear").value;
-  const planned = +document.getElementById("plannedMilestones").value;
-  const completed = +document.getElementById("completedMilestones").value;
-  const feedback = +document.getElementById("citizenFeedback").value;
-  const budgetUsed = +document.getElementById("budgetUsed").value;
+  let policy = Number(document.getElementById("policy").value);
+  let approval = Number(document.getElementById("approval").value);
+  let infra = Number(document.getElementById("infra").value);
+  let budget = Number(document.getElementById("budget").value);
+  let coordination = Number(document.getElementById("coordination").value);
 
-  if (!startYear || !plannedYear || !planned || !completed || !feedback || !budgetUsed) {
-    alert("Please fill all fields correctly");
-    return;
+  let ard = Math.round(
+    (policy + approval + infra + budget + coordination) / 5
+  );
+
+  document.getElementById("score").innerText = ard;
+
+  let statusText = "";
+  let color = "";
+
+  if (ard <= 20) {
+    statusText = "Strong Administration";
+    color = "green";
+  } else if (ard <= 40) {
+    statusText = "Minor Execution Gaps";
+    color = "limegreen";
+  } else if (ard <= 60) {
+    statusText = "Moderate Administrative Drift";
+    color = "orange";
+  } else if (ard <= 80) {
+    statusText = "High Administrative Drift";
+    color = "orangered";
+  } else {
+    statusText = "Administrative Failure";
+    color = "red";
   }
 
-  const currentYear = new Date().getFullYear();
+  document.getElementById("status").innerText = statusText;
+  document.getElementById("status").style.color = color;
 
-  // Execution %
-  const execution = (completed / planned) * 100;
-
-  // Expected progress by time
-  const expected =
-    ((currentYear - startYear) / (plannedYear - startYear)) * 100;
-
-  // Drift components
-  const timeDrift = Math.max(0, expected - execution);
-  const budgetDrift = Math.max(0, budgetUsed - execution);
-  const sentimentDrift = 100 - feedback;
-
-  const avgDrift = (timeDrift + budgetDrift + sentimentDrift) / 3;
-
-  const ardScore = Math.max(0, Math.min(100, Math.round(100 - avgDrift)));
-
-  animateARD(ardScore);
-}
-
-function animateARD(score) {
-  const circle = document.querySelector(".progress-circle");
-  const value = document.getElementById("ardValue");
-  const status = document.getElementById("ardStatus");
-
-  let current = 0;
-
-  const interval = setInterval(() => {
-    if (current <= score) {
-      value.innerText = current;
-      circle.style.background =
-        `conic-gradient(#ff4ecd ${current * 3.6}deg, #3f87ff ${current * 3.6}deg, #1a1a2e 0deg)`;
-      current++;
-    } else {
-      clearInterval(interval);
-    }
-  }, 15);
-
-  if (score < 40)
-    status.innerText = "🚨 High Administrative Reality Drift";
-  else if (score < 70)
-    status.innerText = "⚠️ Moderate Administrative Reality Drift";
-  else
-    status.innerText = "✅ Healthy Administrative Execution";
+  let bar = document.getElementById("progressBar");
+  bar.style.width = ard + "%";
+  bar.style.background = color;
 }
