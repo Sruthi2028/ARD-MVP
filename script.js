@@ -1,27 +1,31 @@
 function calculateARD() {
-  const planned = document.getElementById("planned").value;
-  const actual = document.getElementById("actual").value;
+  const planned = Number(document.getElementById("planned").value);
+  const actual = Number(document.getElementById("actual").value);
 
-  if (planned === "" || actual === "") {
-    alert("Please enter both values");
+  if (!planned || !actual || planned <= 0) {
+    alert("Please enter valid Planned and Actual values");
     return;
   }
 
-  const ardScore = Math.abs(planned - actual);
-  const effectiveness = 100 - ardScore;
+  // ARD formula
+  const ard = Math.abs(planned - actual) / planned * 100;
+  const ardValue = ard.toFixed(2);
+
+  // Effectiveness (inverse of ARD)
+  const effectiveness = Math.max(0, 100 - ard);
 
   document.getElementById("score").innerText =
-    "ARD Effectiveness: " + effectiveness + "%";
+    "ARD: " + ardValue + "%";
 
   document.getElementById("progress").style.width =
     effectiveness + "%";
 
   let statusText = "";
 
-  if (effectiveness >= 75)
-    statusText = "Highly Effective Administration";
-  else if (effectiveness >= 50)
-    statusText = "Moderately Effective Administration";
+  if (ard <= 20)
+    statusText = "Low Administrative Drift (Highly Effective)";
+  else if (ard <= 40)
+    statusText = "Moderate Administrative Drift";
   else
     statusText = "High Administrative Drift";
 
