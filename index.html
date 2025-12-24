@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ARD – Administrative Reality Drift</title>
+
+  <!-- Google Charts -->
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app">
+
+    <h1>Administrative Reality Drift (ARD)</h1>
+    <p class="subtitle">
+      Measuring the gap between <b>government promises</b> and <b>ground reality</b>
+    </p>
+
+    <div class="cards">
+
+      <!-- Planned -->
+      <div class="card planned">
+        <h2>📋 Planned Data</h2>
+
+        <label>Planned Completion Year</label>
+        <input type="number" id="plannedYear" placeholder="e.g. 2022">
+
+        <label>Planned Budget (₹ Cr)</label>
+        <input type="number" id="plannedCost" placeholder="e.g. 1000">
+      </div>
+
+      <!-- Reality -->
+      <div class="card reality">
+        <h2>🏗️ Reality Data</h2>
+
+        <label>Actual Completion Year</label>
+        <input type="number" id="actualYear" placeholder="e.g. 2025">
+
+        <label>Actual Cost (₹ Cr)</label>
+        <input type="number" id="actualCost" placeholder="e.g. 1600">
+
+        <label>Scope Delivered</label>
+        <select id="scope">
+          <option value="0">Fully Delivered</option>
+          <option value="50">Partially Delivered</option>
+          <option value="80">Not Delivered</option>
+        </select>
+
+        <label>Ground Impact</label>
+        <select id="impact">
+          <option value="10">High Impact</option>
+          <option value="40">Medium Impact</option>
+          <option value="70">Low Impact</option>
+        </select>
+      </div>
+
+    </div>
+
+    <button onclick="calculateARD()">Calculate ARD</button>
+
+    <div id="result" class="result"></div>
+    <div id="chart_div"></div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
