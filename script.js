@@ -1,34 +1,29 @@
-function calculateARD() {
-  const planned = Number(document.getElementById("planned").value);
-  const actual = Number(document.getElementById("actual").value);
+const policy = 70;
+const publicResp = 55;
+const economic = 65;
 
-  if (!planned || !actual || planned <= 0) {
-    alert("Please enter valid Planned and Actual values");
-    return;
+document.getElementById("policy").innerText = policy + "%";
+document.getElementById("public").innerText = publicResp + "%";
+document.getElementById("economic").innerText = economic + "%";
+
+const ardScore = Math.round((policy + publicResp + economic) / 3);
+const circle = document.querySelector(".progress-circle");
+const ardValue = document.getElementById("ardValue");
+const status = document.getElementById("ardStatus");
+
+let current = 0;
+
+const interval = setInterval(() => {
+  if (current <= ardScore) {
+    ardValue.innerText = current;
+    circle.style.background =
+      `conic-gradient(#ff4ecd ${current * 3.6}deg, #3f87ff ${current * 3.6}deg, #1a1a2e 0deg)`;
+    current++;
+  } else {
+    clearInterval(interval);
   }
+}, 20);
 
-  // ARD formula
-  const ard = Math.abs(planned - actual) / planned * 100;
-  const ardValue = ard.toFixed(2);
-
-  // Effectiveness (inverse of ARD)
-  const effectiveness = Math.max(0, 100 - ard);
-
-  document.getElementById("score").innerText =
-    "ARD: " + ardValue + "%";
-
-  document.getElementById("progress").style.width =
-    effectiveness + "%";
-
-  let statusText = "";
-
-  if (ard <= 20)
-    statusText = "Low Administrative Drift (Highly Effective)";
-  else if (ard <= 40)
-    statusText = "Moderate Administrative Drift";
-  else
-    statusText = "High Administrative Drift";
-
-  document.getElementById("status").innerText =
-    "Status: " + statusText;
-}
+if (ardScore < 40) status.innerText = "⚠️ High Administrative Drift";
+else if (ardScore < 70) status.innerText = "⚡ Moderate Administrative Drift";
+else status.innerText = "✅ Low Administrative Drift";
