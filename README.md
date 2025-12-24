@@ -17,7 +17,7 @@ ARD converts key administrative execution factors into a single score (0–100) 
 
 ## MVP
 Live Demo:  
-👉 https://sruthi2028.github.io/ARD-MVP/
+https://sruthi2028.github.io/ARD-MVP/
 
 ## Tech Stack
 - HTML  
