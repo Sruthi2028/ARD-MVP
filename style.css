@@ -1,156 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
-  margin: 0;
+  background: #0b0f1a;
+  color: white;
   min-height: 100vh;
-  background: radial-gradient(circle at top, #1a1a1a, #000000);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  color: #ffffff;
+  overflow-x: hidden;
 }
 
-/* CONTAINER */
+/* Gradient blobs */
+.blob {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.6;
+  z-index: -1;
+}
+
+.pink { background: #ff4ecd; top: 10%; left: 10%; }
+.blue { background: #3f87ff; top: 50%; right: 10%; }
+.purple { background: #7f5bff; bottom: 5%; left: 40%; }
+
 .container {
-  width: 100%;
   max-width: 1100px;
-  background: #0f0f0f;
-  border-radius: 22px;
-  padding: 30px;
-  box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+  margin: auto;
+  padding: 50px 20px;
 }
 
-/* HEADER */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
+header {
+  text-align: center;
+  margin-bottom: 50px;
 }
 
-.header h1 {
-  background: linear-gradient(90deg, #00f2fe, #4facfe);
+header h1 {
+  font-size: 3rem;
+  background: linear-gradient(90deg, #ff4ecd, #3f87ff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.header i {
-  font-size: 44px;
-  color: #00e5ff;
+header p {
+  opacity: 0.7;
 }
 
-/* GRID */
-.content {
+/* Cards */
+.cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
+  margin-bottom: 60px;
 }
 
-/* CARD */
 .card {
-  background: linear-gradient(145deg, #111111, #1b1b1b);
-  padding: 22px;
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 0 25px rgba(0,0,0,0.7);
-  transition: transform 0.3s ease;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(0,0,0,0.4);
+  transition: transform 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-10px) scale(1.03);
 }
 
-.card h3 {
+.card i {
+  font-size: 2.5rem;
   margin-bottom: 15px;
+  color: #ff4ecd;
 }
 
-/* ICON COLORS */
-.fa-sliders-h { color: #ff9800; }
-.fa-chart-line { color: #00e676; }
-.fa-image { color: #ff4081; }
-.fa-info-circle { color: #40c4ff; }
-.fa-calculator { color: #ffd740; }
-
-/* INPUTS */
-label {
-  display: block;
-  margin-top: 12px;
-  color: #bdbdbd;
-}
-
-input {
-  width: 100%;
-  padding: 11px;
-  margin-top: 6px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  background: #222;
-  color: #ffffff;
-}
-
-/* BUTTON */
-button {
-  width: 100%;
-  margin-top: 18px;
-  padding: 14px;
-  background: linear-gradient(90deg, #00f2fe, #4facfe);
-  color: black;
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
+.card span {
+  font-size: 2rem;
   font-weight: bold;
-  cursor: pointer;
 }
 
-/* RESULT */
-.result {
+/* ARD Section */
+.ard-section {
   text-align: center;
 }
 
-#score {
-  background: linear-gradient(90deg, #76ff03, #00e676);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.progress-container {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
 }
 
-/* PROGRESS */
-.progress-bar {
-  width: 100%;
-  height: 18px;
-  background: #222;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-top: 15px;
-}
-
-.progress-fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #ff1744, #ff9100, #76ff03);
-  transition: width 1s ease;
-}
-
-.status {
-  margin-top: 10px;
+.progress-circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: conic-gradient(#ff4ecd 0deg, #3f87ff 0deg, #1a1a2e 0deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
   font-weight: bold;
-  color: #ffd740;
+  box-shadow: 0 0 40px #3f87ff;
 }
 
-/* IMAGE */
-.illustration img {
-  width: 100%;
-  border-radius: 14px;
-  border: 2px solid rgba(255,255,255,0.1);
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .content {
-    grid-template-columns: 1fr;
-  }
+#ardStatus {
+  font-size: 1.2rem;
+  opacity: 0.8;
 }
