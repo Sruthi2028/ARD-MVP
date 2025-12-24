@@ -14,7 +14,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Gradient blobs */
+/* Background blobs */
 .blob {
   position: absolute;
   width: 350px;
@@ -26,7 +26,7 @@ body {
 }
 
 .pink { background: #ff4ecd; top: 10%; left: 10%; }
-.blue { background: #3f87ff; top: 50%; right: 10%; }
+.blue { background: #3f87ff; top: 55%; right: 10%; }
 .purple { background: #7f5bff; bottom: 5%; left: 40%; }
 
 .container {
@@ -51,40 +51,46 @@ header p {
   opacity: 0.7;
 }
 
-/* Cards */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-  margin-bottom: 60px;
-}
-
-.card {
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(12px);
+/* Input section */
+.input-section {
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(15px);
   border-radius: 20px;
   padding: 30px;
+  margin-bottom: 60px;
   text-align: center;
-  box-shadow: 0 0 30px rgba(0,0,0,0.4);
-  transition: transform 0.3s;
 }
 
-.card:hover {
-  transform: translateY(-10px) scale(1.03);
+.inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin: 25px 0;
 }
 
-.card i {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  color: #ff4ecd;
+.inputs input,
+.inputs select {
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: #11162a;
+  color: white;
+  font-size: 1rem;
+  outline: none;
 }
 
-.card span {
-  font-size: 2rem;
-  font-weight: bold;
+button {
+  padding: 14px 35px;
+  font-size: 1rem;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(90deg, #ff4ecd, #3f87ff);
+  color: white;
+  box-shadow: 0 0 25px #3f87ff;
 }
 
-/* ARD Section */
+/* ARD result */
 .ard-section {
   text-align: center;
 }
@@ -110,5 +116,5 @@ header p {
 
 #ardStatus {
   font-size: 1.2rem;
-  opacity: 0.8;
+  opacity: 0.85;
 }
