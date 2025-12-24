@@ -2,25 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ARD Dashboard – TechSprint MVP</title>
+  <title>ARD Dashboard – TechSprint</title>
 
- 
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <div class="container">
+
   <div class="header">
-    <h1>Administrative Reality Drift (ARD)</h1>
+    <h1>Administrative Reality Drift</h1>
     <i class="fas fa-city"></i>
   </div>
 
   <div class="content">
 
-   
+    <!-- INPUT CARD -->
     <div class="card">
       <h3><i class="fas fa-sliders-h"></i> ARD Inputs</h3>
 
@@ -35,12 +37,12 @@
       </button>
     </div>
 
-   
+    <!-- RESULT CARD -->
     <div class="card">
       <h3><i class="fas fa-chart-line"></i> ARD Result</h3>
 
       <div class="result">
-        <h2 id="score">ARD Effectiveness: --</h2>
+        <h2 id="score">ARD: --</h2>
 
         <div class="progress-bar">
           <div class="progress-fill" id="progress"></div>
@@ -50,26 +52,24 @@
       </div>
     </div>
 
-   
+    <!-- IMAGE CARD -->
     <div class="card illustration">
-      <h3><i class="fas fa-image"></i> Urban Planning Insight</h3>
+      <h3><i class="fas fa-image"></i> Urban Insight</h3>
       <img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad" alt="City Planning">
     </div>
 
-   
+    <!-- INFO CARD -->
     <div class="card">
       <h3><i class="fas fa-info-circle"></i> About ARD</h3>
       <p>
-        ARD (Administrative Reality Drift) measures the gap between
-        government planning commitments and real-world execution.
-        This MVP visualizes administrative effectiveness using a
-        simple composite index.
+        ARD (Administrative Reality Drift) quantifies the gap between
+        planned administrative commitments and actual execution.
+        Lower ARD means better governance effectiveness.
       </p>
     </div>
 
   </div>
 </div>
-
 
 <script src="script.js"></script>
 </body>
