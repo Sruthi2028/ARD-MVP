@@ -18,12 +18,25 @@ function calculateARD() {
     timeDiff <= 2 ? 25 :
     timeDiff <= 4 ? 50 : 75;
 
-  // ---- COST DRIFT ----
-  let costPercent = (actualCost - plannedCost) / plannedCost;
-  let costDrift =
-    costPercent <= 0.1 ? 10 :
-    costPercent <= 0.3 ? 30 :
-    costPercent <= 0.6 ? 60 : 80;
+ // ---- COST DRIFT (FIXED LOGIC) ----
+let costPercent = (actualCost - plannedCost) / plannedCost;
+let costDrift = 0;
+
+if (costPercent <= 0) {
+  costDrift = 0;          // Perfect or under budget
+}
+else if (costPercent <= 0.1) {
+  costDrift = 10;         // ≤10% overrun
+}
+else if (costPercent <= 0.3) {
+  costDrift = 30;         // ≤30% overrun
+}
+else if (costPercent <= 0.6) {
+  costDrift = 60;         // ≤60% overrun
+}
+else {
+  costDrift = 80;         // >60% overrun
+}
 
   // ---- FINAL ARD SCORE ----
   let ardScore = Math.round(
